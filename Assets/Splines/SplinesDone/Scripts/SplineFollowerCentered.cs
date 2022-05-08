@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class SplineFollowerCentered : MonoBehaviour {
     [SerializeField] private SplineFollowerManager manager;
+
     [SerializeField] private int offsetIndex;
+    private float offsetIndexLerp;
+
+    private float moveAmount;
 
     private void Update() {
-        float moveAmount = (manager.GetOffsetInitial() + offsetIndex * manager.GetOffsetInterval() + manager.GetMoveAmount()) % manager.GetMaxMoveAmount();
+        offsetIndexLerp = Mathf.Lerp(offsetIndexLerp, offsetIndex, 0.1f);
+
+        moveAmount = (manager.GetOffsetInitial() + offsetIndexLerp * manager.GetOffsetInterval() + manager.GetMoveAmount()) % manager.GetMaxMoveAmount();
 
         SplineDone spline = manager.GetSpline();
 
@@ -22,5 +28,25 @@ public class SplineFollowerCentered : MonoBehaviour {
                 transform.forward = spline.GetForwardAtUnits(moveAmount);
                 break;
         }
+    }
+
+    public int GetOffsetIndex()
+    {
+        return offsetIndex;
+    }
+
+    public void SetOffsetIndex(int index)
+    {
+        offsetIndex = index;
+    }
+
+    public float GetMoveAmount()
+    {
+        return moveAmount;
+    }
+
+    public void SetManager(SplineFollowerManager manager)
+    {
+        this.manager = manager;
     }
 }
