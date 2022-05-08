@@ -61,4 +61,14 @@ public class OrbGenerator : MonoBehaviour
 
         return orb;
     }
+
+    public Orb GetForemostOrb()
+    {
+        return foremostOrb;
+    }
+
+    public Orb GetLatestOrb()
+    {
+        return latestOrb;
+    }
 }
