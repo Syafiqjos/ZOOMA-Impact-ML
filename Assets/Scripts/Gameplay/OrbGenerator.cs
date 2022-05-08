@@ -44,7 +44,7 @@ public class OrbGenerator : MonoBehaviour
         } else
         {
             int index = latestOrb.GetFollower().GetOffsetIndex();
-            int newIndex = index + 1;
+            int newIndex = index - 1;
 
             Orb newOrb = SpawnOrb(newIndex);
             latestOrb = newOrb;
