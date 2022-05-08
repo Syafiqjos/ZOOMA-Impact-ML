@@ -40,6 +40,7 @@ public class SplineFollowerCentered : MonoBehaviour {
 
     public void SetOffsetIndex(int index)
     {
+        offsetIndexLerp = index;
         offsetIndex = index;
     }
 
