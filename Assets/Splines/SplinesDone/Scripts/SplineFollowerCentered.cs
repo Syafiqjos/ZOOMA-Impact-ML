@@ -9,11 +9,14 @@ public class SplineFollowerCentered : MonoBehaviour {
     private float offsetIndexLerp;
 
     private float moveAmount;
+    private float loopAmount;
 
     private void Update() {
         offsetIndexLerp = Mathf.Lerp(offsetIndexLerp, offsetIndex, 0.1f);
 
-        moveAmount = (manager.GetOffsetInitial() + offsetIndexLerp * manager.GetOffsetInterval() + manager.GetMoveAmount()) % manager.GetMaxMoveAmount();
+        float moveAmountRaw = manager.GetOffsetInitial() + offsetIndexLerp * manager.GetOffsetInterval() + manager.GetMoveAmount();
+        moveAmount = moveAmountRaw % manager.GetMaxMoveAmount();
+        loopAmount = moveAmountRaw / manager.GetMaxMoveAmount();
 
         SplineDone spline = manager.GetSpline();
 
@@ -43,6 +46,11 @@ public class SplineFollowerCentered : MonoBehaviour {
     public float GetMoveAmount()
     {
         return moveAmount;
+    }
+
+    public float GetLoopAmount()
+    {
+        return loopAmount;
     }
 
     public void SetManager(SplineFollowerManager manager)
