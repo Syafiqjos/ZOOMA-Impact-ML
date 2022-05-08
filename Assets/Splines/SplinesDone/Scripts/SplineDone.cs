@@ -204,16 +204,21 @@ public class SplineDone : MonoBehaviour {
         UpdateForwardVectors();
     }
 
-    private void UpdateForwardVectors() {
+    private void UpdateForwardVectors()
+    {
         // Set forward vectors
-        for (int i = 0; i < pointList.Count - 1; i++) {
+        for (int i = 0; i < pointList.Count - 1; i++)
+        {
             pointList[i].forward = (pointList[i + 1].position - pointList[i].position).normalized;
         }
         // Set final forward vector
-        if (closedLoop) {
-            pointList[pointList.Count - 1].forward = pointList[0].forward;
-        } else {
-            pointList[pointList.Count - 1].forward = pointList[pointList.Count - 2].forward;
+        if (closedLoop)
+        {
+            if (pointList.Count > 1) { pointList[pointList.Count - 1].forward = pointList[0].forward; }
+        }
+        else
+        {
+            if (pointList.Count > 2) { pointList[pointList.Count - 1].forward = pointList[pointList.Count - 2].forward; }
         }
     }
 
@@ -246,15 +251,32 @@ public class SplineDone : MonoBehaviour {
         return anchorList;
     }
 
-    public void AddAnchor() {
+    public void AddAnchor()
+    {
         if (anchorList == null) anchorList = new List<Anchor>();
+        else
+        {
+            if (anchorList.Count > 0)
+            {
+                Anchor lastAnchor = anchorList[anchorList.Count - 1];
+                anchorList.Add(new Anchor
+                {
+                    position = lastAnchor.position + new Vector3(1, 1, 0),
+                    handleAPosition = lastAnchor.handleAPosition + new Vector3(1, 1, 0),
+                    handleBPosition = lastAnchor.handleBPosition + new Vector3(1, 1, 0),
+                });
+            }
+            else
+            {
+                anchorList.Add(new Anchor
+                {
+                    position = Vector3.zero,
+                    handleAPosition = new Vector3(0, 0, 1),
+                    handleBPosition = new Vector3(0, 0, -1),
+                });
+            }
+        }
 
-        Anchor lastAnchor = anchorList[anchorList.Count - 1];
-        anchorList.Add(new Anchor {
-            position = lastAnchor.position + new Vector3(1, 1, 0),
-            handleAPosition = lastAnchor.handleAPosition + new Vector3(1, 1, 0),
-            handleBPosition = lastAnchor.handleBPosition + new Vector3(1, 1, 0),
-        });
     }
 
     public void RemoveLastAnchor() {
