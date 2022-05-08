@@ -59,6 +59,8 @@ public class OrbGenerator : MonoBehaviour
         orb.SetManager(followerManager);
         orb.SetIndex(index);
 
+        orb.transform.position = orbsContainer.transform.position;
+
         return orb;
     }
 
