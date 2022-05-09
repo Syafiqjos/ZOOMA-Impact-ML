@@ -741,6 +741,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1463949148}
   - component: {fileID: 1463949149}
+  - component: {fileID: 1463949150}
   m_Layer: 0
   m_Name: Zuma
   m_TagString: Untagged
@@ -775,6 +776,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f34df58e349014c92be9c8f3cc3561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1463949150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463949147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb93eab144fbb9044bd52cbbfe058e77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnable: 1
+  bulletSpeed: 1
+  controller: {fileID: 1463949149}
+  bulletPrefab: {fileID: 6224593391892367128, guid: d72d043638e54594e9cd9cf96c0ec7a7, type: 3}
 --- !u!1 &1672564398
 GameObject:
   m_ObjectHideFlags: 0
