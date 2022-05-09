@@ -11,6 +11,13 @@ public class ZumaShooter : MonoBehaviour
     [SerializeField] private ZumaBullet bulletPrefab;
     [SerializeField] private OrbGenerator orbGenerator;
 
+    [SerializeField] private OrbData orbDataToBeShooted;
+
+    private void Start()
+    {
+        RefreshToBeShootedOrbData();
+    }
+
     private void Update()
     {
         CheckShooting();
@@ -34,6 +41,18 @@ public class ZumaShooter : MonoBehaviour
 
         ZumaBullet bullet = ne.GetComponent<ZumaBullet>();
         bullet.LaunchBullet(direction, speed);
-        bullet.SetOrbData(orbGenerator.GetRandomOrbData());
+        bullet.SetOrbData(orbDataToBeShooted);
+
+        RefreshToBeShootedOrbData();
+    }
+
+    private void RefreshToBeShootedOrbData()
+    {
+        orbDataToBeShooted = orbGenerator.GetRandomOrbData();
+    }
+
+    public OrbData GetToBeShootedOrbData()
+    {
+        return orbDataToBeShooted;
     }
 }
