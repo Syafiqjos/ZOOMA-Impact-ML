@@ -94,6 +94,14 @@ public class OrbGenerator : MonoBehaviour
         newOrb.SetIndex(nextIndex);
     }
 
+    public void RemoveOrb(Orb orb)
+    {
+        ReassignOrbLink(orb);
+        ReindexNextOrbLink(orb.GetPrevOrb());
+
+        Destroy(orb.gameObject);
+    }
+
     private void ReassignOrbLink(Orb newOrb, Orb prevOrb, Orb nextOrb)
     {
         newOrb.SetPrevOrb(prevOrb);
@@ -109,6 +117,21 @@ public class OrbGenerator : MonoBehaviour
         {
             // Placing orb in the foremost
             foremostOrb = newOrb;
+        }
+    }
+
+    private void ReassignOrbLink(Orb orb)
+    {
+        Orb nextOrb = orb.GetNextOrb();
+        Orb prevOrb = orb.GetPrevOrb();
+
+        prevOrb?.SetNextOrb(nextOrb);
+        nextOrb?.SetPrevOrb(prevOrb);
+
+        // Orb is a foremost
+        if (orb.GetNextOrb() == null)
+        {
+            foremostOrb = foremostOrb.GetPrevOrb();
         }
     }
 
