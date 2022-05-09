@@ -38,9 +38,14 @@ public class SplineFollowerCentered : MonoBehaviour {
         return offsetIndex;
     }
 
-    public void SetOffsetIndex(int index)
+    public void SetOffsetIndexForce(int index)
     {
         offsetIndexLerp = index;
+        offsetIndex = index;
+    }
+
+    public void SetOffsetIndex(int index)
+    {
         offsetIndex = index;
     }
 
