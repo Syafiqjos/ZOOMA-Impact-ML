@@ -18,10 +18,17 @@ public class ZumaController : MonoBehaviour
 
     private void ControlFacing()
     {
+        Vector3 pointerLocation = GetPointerLocation();
+        transform.LookAt(pointerLocation);
+    }
+
+    public Vector3 GetPointerLocation()
+    {
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = mainCamera.transform.position.y;
 
         Vector3 pointerLocation = mainCamera.ScreenToWorldPoint(mousePosition);
-        transform.LookAt(pointerLocation);
+
+        return pointerLocation;
     }
 }
