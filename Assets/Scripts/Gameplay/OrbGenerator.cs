@@ -92,6 +92,8 @@ public class OrbGenerator : MonoBehaviour
 
         newOrb.SetIndexForce(currentIndex);
         newOrb.SetIndex(nextIndex);
+
+        CheckPopSequentialOrbs(newOrb);
     }
 
     public void RemoveOrb(Orb orb)
@@ -148,6 +150,43 @@ public class OrbGenerator : MonoBehaviour
             nextOrb.SetIndex(nextIndex);
 
             currentOrb = nextOrb;
+        }
+    }
+
+    private void CheckPopSequentialOrbs(Orb orb)
+    {
+        Orb foremostSequentialOrb = orb;
+
+        // Travel to foremost that have the same color
+        while (foremostSequentialOrb.GetNextOrb() 
+            && foremostSequentialOrb.GetNextOrb().GetOrbData().GetOrbType() == foremostSequentialOrb.GetOrbData().GetOrbType())
+        {
+            foremostSequentialOrb = foremostSequentialOrb.GetNextOrb();
+        }
+
+        List<Orb> sequentialOrbs = new List<Orb>();
+        Orb currentOrb = foremostSequentialOrb;
+
+        sequentialOrbs.Add(currentOrb);
+
+        // Travel to latest that have the same color
+        while (currentOrb.GetPrevOrb()
+            && currentOrb.GetPrevOrb().GetOrbData().GetOrbType() == currentOrb.GetOrbData().GetOrbType())
+        {
+            currentOrb = currentOrb.GetPrevOrb();
+            sequentialOrbs.Add(currentOrb);
+        }
+
+        // Check if sequential has more than 2 orbs then remove all of them
+        if (sequentialOrbs.Count > 2)
+        {
+            foreach (Orb checkedOrb in sequentialOrbs)
+            {
+                if (checkedOrb)
+                {
+                    RemoveOrb(checkedOrb);
+                }
+            }
         }
     }
 
