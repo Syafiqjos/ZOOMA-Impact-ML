@@ -93,7 +93,12 @@ public class OrbGenerator : MonoBehaviour
 
         if (nextOrb)
         {
+            // Placing orb in the center
             nextOrb.SetPrevOrb(newOrb);
+        } else
+        {
+            // Placing orb in the foremost
+            foremostOrb = newOrb;
         }
     }
 
