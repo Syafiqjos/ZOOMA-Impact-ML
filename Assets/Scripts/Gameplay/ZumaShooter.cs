@@ -13,10 +13,8 @@ public class ZumaShooter : MonoBehaviour
 
     [SerializeField] private OrbData orbDataToBeShooted;
 
-    private void Start()
-    {
-        RefreshToBeShootedOrbData();
-    }
+    public delegate void OnShootEventHandler();
+    public event OnShootEventHandler OnShoot;
 
     private void Update()
     {
@@ -44,9 +42,11 @@ public class ZumaShooter : MonoBehaviour
         bullet.SetOrbData(orbDataToBeShooted);
 
         RefreshToBeShootedOrbData();
+
+        OnShoot();
     }
 
-    private void RefreshToBeShootedOrbData()
+    public void RefreshToBeShootedOrbData()
     {
         orbDataToBeShooted = orbGenerator.GetRandomOrbData();
     }
