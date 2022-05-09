@@ -5,6 +5,10 @@ public class Orb : MonoBehaviour
 {
     [SerializeField] private SplineFollowerCentered splineFollower;
     [SerializeField] private OrbGenerator generator;
+    [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private MeshFilter meshFilter;
+
+    private OrbData orbData;
 
     private Orb nextOrb; // foremost
     private Orb prevOrb; // latest
@@ -59,13 +63,26 @@ public class Orb : MonoBehaviour
         return prevOrb;
     }
 
+    public void SetOrbData(OrbData data)
+    {
+        orbData = data;
+
+        if (orbData.GetMaterial()) meshRenderer.material = orbData.GetMaterial();
+        if (orbData.GetMesh()) meshFilter.mesh = orbData.GetMesh();
+    }
+
+    public OrbData GetOrbData()
+    {
+        return orbData;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Bullet")
         {
             ZumaBullet bullet = other.GetComponent<ZumaBullet>();
             if (bullet && !bullet.GetPlacedFlag()) {
-                generator.PlaceNextOrb(this);
+                generator.PlaceNextOrb(this, bullet.GetOrbData());
                 if (bullet)
                 {
                     bullet.SetPlacedFlag(true);

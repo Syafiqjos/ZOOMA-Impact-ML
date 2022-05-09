@@ -157,6 +157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splineFollower: {fileID: 8842829441419453826}
   generator: {fileID: 0}
+  meshRenderer: {fileID: 7629014660035284200}
+  meshFilter: {fileID: 1634539466162497774}
 --- !u!54 &9197741751632052126
 Rigidbody:
   m_ObjectHideFlags: 0

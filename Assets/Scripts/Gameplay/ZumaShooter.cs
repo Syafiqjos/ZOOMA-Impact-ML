@@ -9,6 +9,7 @@ public class ZumaShooter : MonoBehaviour
 
     [SerializeField] private ZumaController controller;
     [SerializeField] private ZumaBullet bulletPrefab;
+    [SerializeField] private OrbGenerator orbGenerator;
 
     private void Update()
     {
@@ -33,5 +34,6 @@ public class ZumaShooter : MonoBehaviour
 
         ZumaBullet bullet = ne.GetComponent<ZumaBullet>();
         bullet.LaunchBullet(direction, speed);
+        bullet.SetOrbData(orbGenerator.GetRandomOrbData());
     }
 }

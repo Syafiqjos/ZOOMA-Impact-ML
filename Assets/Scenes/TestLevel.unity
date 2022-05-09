@@ -189,6 +189,11 @@ MonoBehaviour:
   orbPrefab: {fileID: 770132255742238066, guid: 83d9dc4f2d333a1418674a6380aefbb3, type: 3}
   followerManager: {fileID: 343205992}
   orbsContainer: {fileID: 1672564399}
+  orbsData:
+  - {fileID: 11400000, guid: ccd081114b2c49245a7cb5f9f92ac91a, type: 2}
+  - {fileID: 11400000, guid: 5cd6ac3be38fad74d8951724ddc23e52, type: 2}
+  - {fileID: 11400000, guid: 74047cd51cc53eb4d99fb87f4d5bac78, type: 2}
+  - {fileID: 11400000, guid: aef7b8da6a8849d4e98c7dfddd50c790, type: 2}
 --- !u!1 &730215137
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,6 +797,7 @@ MonoBehaviour:
   bulletSpeed: 1
   controller: {fileID: 1463949149}
   bulletPrefab: {fileID: 6224593391892367128, guid: d72d043638e54594e9cd9cf96c0ec7a7, type: 3}
+  orbGenerator: {fileID: 343205994}
 --- !u!1 &1672564398
 GameObject:
   m_ObjectHideFlags: 0

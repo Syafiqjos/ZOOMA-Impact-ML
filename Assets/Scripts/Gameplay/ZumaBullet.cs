@@ -5,6 +5,10 @@ using UnityEngine;
 public class ZumaBullet : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private MeshFilter meshFilter;
+
+    private OrbData orbData;
 
     private bool placedFlag = false;
 
@@ -21,5 +25,18 @@ public class ZumaBullet : MonoBehaviour
     public void SetPlacedFlag(bool flag)
     {
         placedFlag = flag;
+    }
+
+    public void SetOrbData(OrbData data)
+    {
+        orbData = data;
+
+        if (orbData.GetMaterial()) meshRenderer.material = orbData.GetMaterial();
+        if (orbData.GetMesh()) meshFilter.mesh = orbData.GetMesh();
+    }
+
+    public OrbData GetOrbData()
+    {
+        return orbData;
     }
 }

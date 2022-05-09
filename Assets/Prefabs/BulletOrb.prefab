@@ -140,7 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb5c73b4d434784b8eb27bd52737700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orbData: {fileID: 0}
   rb: {fileID: -3747106717929817217}
+  meshRenderer: {fileID: 7629014660035284200}
+  meshFilter: {fileID: 1634539466162497774}
 --- !u!54 &-3747106717929817217
 Rigidbody:
   m_ObjectHideFlags: 0

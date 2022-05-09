@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class OrbGenerator : MonoBehaviour
 {
     [SerializeField] private Orb orbPrefab;
     [SerializeField] private SplineFollowerManager followerManager;
     [SerializeField] private Transform orbsContainer;
+
+    [SerializeField] private List<OrbData> orbsData;
 
     private Orb foremostOrb = null;
     private Orb latestOrb = null;
@@ -65,17 +67,19 @@ public class OrbGenerator : MonoBehaviour
         orb.SetManager(followerManager);
         orb.SetGenerator(this);
         orb.SetIndex(index);
+        orb.SetOrbData(GetRandomOrbData());
 
         orb.transform.position = orbsContainer.transform.position;
 
         return orb;
     }
 
-    public void PlaceNextOrb(Orb orb)
+    public void PlaceNextOrb(Orb orb, OrbData newOrbData)
     {
         int currentIndex = orb.GetIndex();
         int nextIndex = currentIndex + 1;
         Orb newOrb = SpawnOrb(nextIndex);
+        newOrb.SetOrbData(newOrbData);
 
         ReassignOrbLink(newOrb, orb, orb.GetNextOrb());
         ReindexNextOrbLink(newOrb);
@@ -126,5 +130,10 @@ public class OrbGenerator : MonoBehaviour
     public Orb GetLatestOrb()
     {
         return latestOrb;
+    }
+
+    public OrbData GetRandomOrbData()
+    {
+        return orbsData[Random.Range(0, orbsData.Count)];
     }
 }
