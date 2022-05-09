@@ -67,7 +67,13 @@ public class OrbGenerator : MonoBehaviour
         orb.SetManager(followerManager);
         orb.SetGenerator(this);
         orb.SetIndex(index);
-        orb.SetOrbData(GetRandomOrbData());
+        orb.SetOrbData(
+            GetRandomOrbDataDifferently(
+                new List<OrbData> {
+                    latestOrb?.GetOrbData(),
+                    latestOrb?.GetNextOrb()?.GetOrbData()
+                })
+        );
 
         orb.transform.position = orbsContainer.transform.position;
 
@@ -135,5 +141,16 @@ public class OrbGenerator : MonoBehaviour
     public OrbData GetRandomOrbData()
     {
         return orbsData[Random.Range(0, orbsData.Count)];
+    }
+
+    public OrbData GetRandomOrbDataDifferently(List<OrbData> usedOrbsData)
+    {
+        List<OrbData> randomOrbDataListTemp = new List<OrbData>(orbsData);
+        if (usedOrbsData[0] == usedOrbsData[1])
+        {
+            randomOrbDataListTemp.Remove(usedOrbsData[0]);
+        }
+
+        return randomOrbDataListTemp[Random.Range(0, randomOrbDataListTemp.Count)];
     }
 }
