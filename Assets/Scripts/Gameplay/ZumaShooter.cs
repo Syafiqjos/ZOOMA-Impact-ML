@@ -28,7 +28,9 @@ public class ZumaShooter : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Vector3 direction = controller.GetPointerLocation() - transform.position;
-                Shoot(direction, bulletSpeed);
+                direction.y = 0;
+
+                Shoot(direction.normalized, bulletSpeed);
             }
         }
     }
