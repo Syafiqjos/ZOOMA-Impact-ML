@@ -890,11 +890,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnable: 1
-  bulletSpeed: 1
+  bulletSpeed: 10
   controller: {fileID: 1463949149}
   bulletPrefab: {fileID: 6224593391892367128, guid: d72d043638e54594e9cd9cf96c0ec7a7, type: 3}
   orbGenerator: {fileID: 343205994}
-  orbDataToBeShooted: {fileID: 0}
 --- !u!1 &1600804215
 GameObject:
   m_ObjectHideFlags: 0

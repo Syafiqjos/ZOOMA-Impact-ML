@@ -11,7 +11,7 @@ public class ZumaShooter : MonoBehaviour
     [SerializeField] private ZumaBullet bulletPrefab;
     [SerializeField] private OrbGenerator orbGenerator;
 
-    [SerializeField] private OrbData orbDataToBeShooted;
+    private OrbData orbDataToBeShooted;
 
     public delegate void OnShootEventHandler();
     public event OnShootEventHandler OnShoot;

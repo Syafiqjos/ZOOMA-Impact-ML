@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class OrbGenerator : MonoBehaviour
@@ -93,7 +94,7 @@ public class OrbGenerator : MonoBehaviour
         newOrb.SetIndexForce(currentIndex);
         newOrb.SetIndex(nextIndex);
 
-        CheckPopSequentialOrbs(newOrb);
+        StartCoroutine(CheckPopSequentialOrbs(newOrb));
     }
 
     public void RemoveOrb(Orb orb)
@@ -153,7 +154,7 @@ public class OrbGenerator : MonoBehaviour
         }
     }
 
-    private void CheckPopSequentialOrbs(Orb orb)
+    private IEnumerator CheckPopSequentialOrbs(Orb orb)
     {
         Orb foremostSequentialOrb = orb;
 
@@ -166,6 +167,7 @@ public class OrbGenerator : MonoBehaviour
 
         List<Orb> sequentialOrbs = new List<Orb>();
         Orb currentOrb = foremostSequentialOrb;
+        Orb nextForemostOrb = currentOrb.GetNextOrb();
 
         sequentialOrbs.Add(currentOrb);
 
@@ -186,6 +188,11 @@ public class OrbGenerator : MonoBehaviour
                 {
                     RemoveOrb(checkedOrb);
                 }
+            }
+            if (nextForemostOrb)
+            {
+                yield return new WaitForSeconds(1.0f);
+                yield return CheckPopSequentialOrbs(nextForemostOrb);
             }
         }
     }
