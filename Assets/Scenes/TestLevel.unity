@@ -321,18 +321,18 @@ MonoBehaviour:
   - position: {x: 17.746704, y: 0, z: 7.2225995}
     handleAPosition: {x: 19.43774, y: 0, z: 10.7539835}
     handleBPosition: {x: 3.9461308, y: 0, z: 1.7544005}
-  - position: {x: -3.6889534, y: 1, z: 5.807699}
-    handleAPosition: {x: 0.83597976, y: 1, z: 3.4457574}
-    handleBPosition: {x: -9.213243, y: 1, z: 7.4183855}
-  - position: {x: -9.1469555, y: 2, z: -3.274826}
-    handleAPosition: {x: -13.250043, y: 2, z: 1.5769249}
-    handleBPosition: {x: -5.4099927, y: 2, z: -6.186713}
-  - position: {x: -0.5302775, y: 3, z: -3.6859694}
-    handleAPosition: {x: -2.546258, y: 3, z: -4.440715}
-    handleBPosition: {x: 1.8793676, y: 3, z: -2.6022727}
-  - position: {x: 0.7687359, y: 4, z: 0.87398183}
-    handleAPosition: {x: 1.5644283, y: 4, z: 0.8003075}
-    handleBPosition: {x: -0.1208477, y: 4, z: 1.6623824}
+  - position: {x: -3.6889534, y: 0, z: 5.807699}
+    handleAPosition: {x: 0.83597976, y: 0, z: 3.4457574}
+    handleBPosition: {x: -9.213243, y: 0, z: 7.4183855}
+  - position: {x: -9.1469555, y: 0, z: -3.274826}
+    handleAPosition: {x: -13.250043, y: 0, z: 1.5769249}
+    handleBPosition: {x: -5.4099927, y: 0, z: -6.186713}
+  - position: {x: -0.5302775, y: 0, z: -3.6859694}
+    handleAPosition: {x: -2.546258, y: 0, z: -4.440715}
+    handleBPosition: {x: 1.8793676, y: 0, z: -2.6022727}
+  - position: {x: 0.7687359, y: 0, z: 0.87398183}
+    handleAPosition: {x: 1.5644283, y: 0, z: 0.8003075}
+    handleBPosition: {x: -0.1208477, y: 0, z: 1.6623824}
 --- !u!4 &836949289
 Transform:
   m_ObjectHideFlags: 0
@@ -757,7 +757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463949147}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.79, y: -0.5681114, z: 0.55}
+  m_LocalPosition: {x: -4.79, y: 0, z: 0.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1084498702}
