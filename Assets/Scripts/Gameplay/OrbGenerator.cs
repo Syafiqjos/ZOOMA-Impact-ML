@@ -39,6 +39,7 @@ public class OrbGenerator : MonoBehaviour
         if (foremostOrb == null && latestOrb == null)
         {
             Orb newOrb = SpawnOrb(0);
+            newOrb.SetIndexForce(newOrb.GetIndex());
             foremostOrb = newOrb;
             latestOrb = newOrb;
         } else
@@ -47,6 +48,11 @@ public class OrbGenerator : MonoBehaviour
             int newIndex = index - 1;
 
             Orb newOrb = SpawnOrb(newIndex);
+            newOrb.SetIndexForce(newOrb.GetIndex());
+
+            latestOrb.SetPrevOrb(newOrb);
+            newOrb.SetNextOrb(latestOrb);
+
             latestOrb = newOrb;
         }
     }
@@ -57,11 +63,54 @@ public class OrbGenerator : MonoBehaviour
         Orb orb = ne.GetComponent<Orb>();
 
         orb.SetManager(followerManager);
+        orb.SetGenerator(this);
         orb.SetIndex(index);
 
         orb.transform.position = orbsContainer.transform.position;
 
         return orb;
+    }
+
+    public void PlaceNextOrb(Orb orb)
+    {
+        int currentIndex = orb.GetIndex();
+        int nextIndex = currentIndex + 1;
+        Orb newOrb = SpawnOrb(nextIndex);
+
+        ReassignOrbLink(newOrb, orb, orb.GetNextOrb());
+        ReindexNextOrbLink(newOrb);
+
+        newOrb.SetIndexForce(currentIndex);
+        newOrb.SetIndex(nextIndex);
+    }
+
+    private void ReassignOrbLink(Orb newOrb, Orb prevOrb, Orb nextOrb)
+    {
+        newOrb.SetPrevOrb(prevOrb);
+        newOrb.SetNextOrb(nextOrb);
+
+        prevOrb.SetNextOrb(newOrb);
+
+        if (nextOrb)
+        {
+            nextOrb.SetPrevOrb(newOrb);
+        }
+    }
+
+    private void ReindexNextOrbLink(Orb orb)
+    {
+        Orb currentOrb = orb;
+
+        Orb nextOrb;
+        while (nextOrb = currentOrb.GetNextOrb())
+        {
+            int currentIndex = currentOrb.GetIndex();
+            int nextIndex = currentIndex + 1;
+
+            nextOrb.SetIndex(nextIndex);
+
+            currentOrb = nextOrb;
+        }
     }
 
     public Orb GetForemostOrb()
