@@ -22,7 +22,7 @@ public class ZumaController : MonoBehaviour
         transform.LookAt(pointerLocation);
     }
 
-    public Vector3 GetPointerLocation()
+    public virtual Vector3 GetPointerLocation()
     {
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = mainCamera.transform.position.y;
