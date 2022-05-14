@@ -15,6 +15,8 @@ public class OrbGenerator : MonoBehaviour
 
     private float latestMoveAmount = 0;
 
+    [SerializeField] private ScoreManager scoreManager;
+
     private void Update()
     {
         CheckShouldAddOrb();
@@ -154,7 +156,7 @@ public class OrbGenerator : MonoBehaviour
         }
     }
 
-    private IEnumerator CheckPopSequentialOrbs(Orb orb)
+    private IEnumerator CheckPopSequentialOrbs(Orb orb, int combo = 1)
     {
         Orb foremostSequentialOrb = orb;
 
@@ -189,10 +191,12 @@ public class OrbGenerator : MonoBehaviour
                     RemoveOrb(checkedOrb);
                 }
             }
+            // Add Score
+            scoreManager.ExecuteScore(combo);
             if (nextForemostOrb)
             {
                 yield return new WaitForSeconds(1.0f);
-                yield return CheckPopSequentialOrbs(nextForemostOrb);
+                yield return CheckPopSequentialOrbs(nextForemostOrb, combo + 1);
             }
         }
     }
