@@ -1328,7 +1328,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2951d7958c3e0ca4a86b45d1d8375371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableTrackOrb: 1
+  shooter: {fileID: 1463949150}
   pointer: {fileID: 26547178}
+  orbGenerator: {fileID: 343205994}
 --- !u!1 &1600804215
 GameObject:
   m_ObjectHideFlags: 0

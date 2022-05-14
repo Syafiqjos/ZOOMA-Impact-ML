@@ -226,4 +226,56 @@ public class OrbGenerator : MonoBehaviour
 
         return randomOrbDataListTemp[Random.Range(0, randomOrbDataListTemp.Count)];
     }
+
+    public Orb GetExistForemostSequentialOrb(OrbData orbDataMatch = null, int depthLimit = 1000)
+    {
+        Orb foremostSequentialOrb = GetForemostOrb();
+
+        // Travel to foremost that have the same color
+        while (foremostSequentialOrb && depthLimit > 0)
+        {
+            Orb prevOrb = foremostSequentialOrb.GetPrevOrb();
+
+            if (prevOrb)
+            {
+                int foremostOrbType = foremostSequentialOrb.GetOrbData().GetOrbType();
+                int prevOrbType = prevOrb.GetOrbData().GetOrbType();
+                if (foremostOrbType == prevOrbType
+                    && (orbDataMatch == null || orbDataMatch.GetOrbType() == foremostOrbType))
+                {
+                    return foremostSequentialOrb;
+                }
+            }
+
+            foremostSequentialOrb = prevOrb;
+            depthLimit -= 1;
+        }
+
+        return null;
+    }
+
+    public Orb GetExistForemostOrb(OrbData orbDataMatch = null, int depthLimit = 1000)
+    {
+        Orb foremostSequentialOrb = GetForemostOrb();
+
+        // Travel to foremost that have the same color
+        while (foremostSequentialOrb && depthLimit > 0)
+        {
+            Orb prevOrb = foremostSequentialOrb.GetPrevOrb();
+
+            if (prevOrb)
+            {
+                int foremostOrbType = foremostSequentialOrb.GetOrbData().GetOrbType();
+                if ((orbDataMatch == null || orbDataMatch.GetOrbType() == foremostOrbType))
+                {
+                    return foremostSequentialOrb;
+                }
+            }
+
+            foremostSequentialOrb = prevOrb;
+            depthLimit -= 1;
+        }
+
+        return null;
+    }
 }
