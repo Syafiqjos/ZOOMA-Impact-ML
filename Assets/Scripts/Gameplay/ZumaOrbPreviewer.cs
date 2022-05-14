@@ -11,7 +11,7 @@ public class ZumaOrbPreviewer : MonoBehaviour
     {
         shooter.OnShoot += RefreshPreview;
 
-        shooter.RefreshToBeShootedOrbData();
+        // shooter.RefreshToBeShootedOrbData();
         RefreshPreview();
     }
 

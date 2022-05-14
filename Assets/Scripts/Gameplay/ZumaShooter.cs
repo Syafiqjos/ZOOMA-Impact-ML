@@ -16,6 +16,11 @@ public class ZumaShooter : MonoBehaviour
     public delegate void OnShootEventHandler();
     public event OnShootEventHandler OnShoot;
 
+    private void Awake()
+    {
+        RefreshToBeShootedOrbData();
+    }
+
     private void Update()
     {
         CheckShooting();
@@ -25,7 +30,7 @@ public class ZumaShooter : MonoBehaviour
     {
         if (isEnable)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (CheckShootingTrigger())
             {
                 Vector3 direction = controller.GetPointerLocation() - transform.position;
                 direction.y = 0;
@@ -33,6 +38,11 @@ public class ZumaShooter : MonoBehaviour
                 Shoot(direction.normalized, bulletSpeed);
             }
         }
+    }
+
+    protected virtual bool CheckShootingTrigger()
+    {
+        return Input.GetMouseButtonDown(0);
     }
 
     private void Shoot(Vector3 direction, float speed)
@@ -45,7 +55,7 @@ public class ZumaShooter : MonoBehaviour
 
         RefreshToBeShootedOrbData();
 
-        OnShoot();
+        OnShoot?.Invoke();
     }
 
     public void RefreshToBeShootedOrbData()

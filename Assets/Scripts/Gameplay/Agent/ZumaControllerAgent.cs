@@ -12,6 +12,7 @@ public class ZumaControllerAgent : ZumaController
     [SerializeField] private OrbGenerator orbGenerator;
 
     private Vector3 currentPointerPos;
+    private Orb currentOrbTarget;
 
     public override Vector3 GetPointerLocation()
     {
@@ -42,12 +43,23 @@ public class ZumaControllerAgent : ZumaController
         return pointer;
     }
 
+    public Vector3 GetCurrentPointerPos()
+    {
+        return currentPointerPos;
+    }
+
+    public Orb GetCurrentOrbTarget()
+    {
+        return currentOrbTarget;
+    }
+
     private void TrackOrb()
     {
         // Track by priority
         if (TrackEqualForemostSequentialOrb()) { }
         else if (TrackEqualForemostOrb()) { }
         else if (TrackForemostOrb()) { }
+        else { currentOrbTarget = null; }
     }
 
     private bool TrackEqualForemostSequentialOrb()
@@ -60,6 +72,7 @@ public class ZumaControllerAgent : ZumaController
             Vector3 pivotPos = (sequentialOrb.transform.position + prevOrb.transform.position) / 2;
 
             MovePointer(pivotPos);
+            currentOrbTarget = sequentialOrb;
 
             return true;
         }
@@ -76,6 +89,7 @@ public class ZumaControllerAgent : ZumaController
             Vector3 pivotPos = equalOrb.transform.position;
 
             MovePointer(pivotPos);
+            currentOrbTarget = equalOrb;
 
             return true;
         }
@@ -92,6 +106,7 @@ public class ZumaControllerAgent : ZumaController
             Vector3 pivotPos = foremostOrb.transform.position;
 
             MovePointer(pivotPos);
+            currentOrbTarget = foremostOrb;
 
             return true;
         }
