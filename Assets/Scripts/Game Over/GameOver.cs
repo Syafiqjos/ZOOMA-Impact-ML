@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class NewBehaviourScript : MonoBehaviour
+public class GameOver : MonoBehaviour
 {
-    public void GameOver () 
+    public void GoToMainMenu() 
     {
-       SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+       SceneManager.LoadScene("Menu");
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(GameManager.LevelName);
     }
 }
