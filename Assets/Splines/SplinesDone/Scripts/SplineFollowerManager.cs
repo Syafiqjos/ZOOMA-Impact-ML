@@ -76,4 +76,8 @@ public class SplineFollowerManager : MonoBehaviour
     {
         return moveAmount;
     }
+
+    public void StopMovement() {
+        speed = 0;
+    }
 }
