@@ -17,6 +17,9 @@ public class OrbGenerator : MonoBehaviour
 
     [SerializeField] private ScoreManager scoreManager;
 
+    public delegate void OnOrbRemovedEventHandler(Orb orb);
+    public event OnOrbRemovedEventHandler OnOrbRemoved;
+
     private void Update()
     {
         CheckShouldAddOrb();
@@ -104,6 +107,7 @@ public class OrbGenerator : MonoBehaviour
         ReassignOrbLink(orb);
         ReindexNextOrbLink(orb.GetPrevOrb());
 
+        OnOrbRemoved?.Invoke(orb);
         Destroy(orb.gameObject);
     }
 
