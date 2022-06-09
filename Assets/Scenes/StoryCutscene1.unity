@@ -500,7 +500,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0009346, y: -13}
+  m_AnchoredPosition: {x: -0.000020093, y: 13}
   m_SizeDelta: {x: 1174.7913, y: 255.7686}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &600052480
@@ -904,7 +904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1210887477
 Animator:
   serializedVersion: 3
@@ -1059,7 +1059,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1278044524
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1076,8 +1076,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00091355, y: 0.0000038146973}
-  m_SizeDelta: {x: 1265.4608, y: 368.9596}
+  m_AnchoredPosition: {x: -0.000014305, y: 13}
+  m_SizeDelta: {x: 1257.3214, y: 341.924}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1278044525
 Animator:
@@ -1119,9 +1119,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: Hingga akhirnya, tidak ada lagi kodok tersisa. Kecuali Zooma, terakhir
-    dan satu satunya. Perjuangan tanpa tujuan, keberhasilan tanpa pujian, sendirian.
-    Setidaknya untuk menyelamatkan planet tempat dia tumbuh. Tanpa sepengetahuan 
-    siapapun, dia akan menyelamatkan dunia.
+    dan satu satunya kodok yang bertahan di planet tersebut. Perjuangan tanpa tujuan,
+    keberhasilan tanpa pujian, sendirian. Setidaknya untuk menyelamatkan planet tempat
+    dia tumbuh. Tanpa sepengetahuan  siapapun, dia akan menyelamatkan dunia.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -1130,7 +1130,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 2818572287
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
