@@ -1144,6 +1144,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 303122542571185157, guid: c9e94cb04aea11e4fa74857b1d846de9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2475258248426065414, guid: c9e94cb04aea11e4fa74857b1d846de9, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1192,6 +1196,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZumaBase
       objectReference: {fileID: 0}
+    - target: {fileID: 2475258248453844842, guid: c9e94cb04aea11e4fa74857b1d846de9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2475258248453844844, guid: c9e94cb04aea11e4fa74857b1d846de9, type: 3}
       propertyPath: orbGenerator
       value: 
@@ -1200,9 +1208,17 @@ PrefabInstance:
       propertyPath: orbGenerator
       value: 
       objectReference: {fileID: 343205994}
+    - target: {fileID: 2475258249261361762, guid: c9e94cb04aea11e4fa74857b1d846de9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2475258249261361767, guid: c9e94cb04aea11e4fa74857b1d846de9, type: 3}
       propertyPath: orbGenerator
       value: 
       objectReference: {fileID: 343205994}
+    - target: {fileID: 2475258249703936354, guid: c9e94cb04aea11e4fa74857b1d846de9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9e94cb04aea11e4fa74857b1d846de9, type: 3}
