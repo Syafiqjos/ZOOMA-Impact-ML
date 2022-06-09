@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private OrbGenerator orbGenerator;
     [SerializeField] private SplineFollowerManager followerManager;
 
+    [SerializeField] private GameObject destroyedEffectParticle;
+
     private bool isGameOver = false;
 
     private void Awake()
@@ -45,6 +47,9 @@ public class GameManager : MonoBehaviour
             StopAllZumaController();
             StopAllZumaShooter();
             StopAllOrbMovement();
+
+            destroyedEffectParticle.SetActive(true);
+
             StartCoroutine(LoadRespectiveScene());
         }
     }
