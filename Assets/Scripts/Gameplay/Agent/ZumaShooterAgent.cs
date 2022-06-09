@@ -24,7 +24,7 @@ public class ZumaShooterAgent : ZumaShooter
 
         if (Input.GetMouseButtonDown(0))
         {
-            return true;
+            // return true;
         }
 
         if (enableAutoShoot == false)
@@ -83,7 +83,7 @@ public class ZumaShooterAgent : ZumaShooter
 
         if (Input.GetMouseButtonDown(1))
         {
-            return true;
+            // return true;
         }
 
         if (lastShootCooldownProcess > 0)
