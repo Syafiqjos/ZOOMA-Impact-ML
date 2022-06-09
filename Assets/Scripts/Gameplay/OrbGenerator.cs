@@ -196,7 +196,7 @@ public class OrbGenerator : MonoBehaviour
                 }
             }
             // Add Score
-            scoreManager.ExecuteScore(combo);
+            scoreManager?.ExecuteScore(combo);
             if (nextForemostOrb)
             {
                 yield return new WaitForSeconds(1.0f);

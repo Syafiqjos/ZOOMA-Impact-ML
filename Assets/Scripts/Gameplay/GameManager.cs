@@ -1,13 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static string LevelName;
+
+    [SerializeField] private bool isEnemy;
+
     [SerializeField] private OrbGenerator orbGenerator;
     [SerializeField] private SplineFollowerManager followerManager;
 
     private bool isGameOver = false;
+
+    private void Awake()
+    {
+        LevelName = SceneManager.GetActiveScene().name;
+    }
 
     private void Update()
     {
@@ -32,7 +42,16 @@ public class GameManager : MonoBehaviour
         {
             isGameOver = true;
 
-            Debug.Log("Game Over");
+            if (isEnemy)
+            {
+                Debug.Log("Winning");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else
+            {
+                Debug.Log("Game Over");
+                SceneManager.LoadScene("GameOver");
+            }
         }
     }
 }
