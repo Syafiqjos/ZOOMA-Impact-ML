@@ -12,6 +12,7 @@ public class ZumaShooter : MonoBehaviour
     [SerializeField] private OrbGenerator orbGenerator;
 
     private OrbData orbDataToBeShooted;
+    private OrbData orbDataToBeShootedNext;
 
     public delegate void OnShootEventHandler();
     public event OnShootEventHandler OnShoot;
@@ -37,12 +38,21 @@ public class ZumaShooter : MonoBehaviour
 
                 Shoot(direction.normalized, bulletSpeed);
             }
+
+            if (CheckSwapOrbTrigger()) {
+                SwapOrb();
+            }
         }
     }
 
     protected virtual bool CheckShootingTrigger()
     {
         return Input.GetMouseButtonDown(0);
+    }
+
+    protected virtual bool CheckSwapOrbTrigger()
+    {
+        return Input.GetMouseButtonDown(1);
     }
 
     private void Shoot(Vector3 direction, float speed)
@@ -58,13 +68,29 @@ public class ZumaShooter : MonoBehaviour
         OnShoot?.Invoke();
     }
 
+    private void SwapOrb() {
+        OrbData temp = orbDataToBeShootedNext;
+        orbDataToBeShootedNext = orbDataToBeShooted;
+        orbDataToBeShooted = temp;
+
+        OnShoot?.Invoke();
+    }
+
     public void RefreshToBeShootedOrbData()
     {
-        orbDataToBeShooted = orbGenerator.GetRandomOrbData();
+        if (orbDataToBeShootedNext) orbDataToBeShooted = orbDataToBeShootedNext;
+        else orbDataToBeShooted = orbGenerator.GetRandomOrbData();
+
+        orbDataToBeShootedNext = orbGenerator.GetRandomOrbData();
     }
 
     public OrbData GetToBeShootedOrbData()
     {
         return orbDataToBeShooted;
+    }
+
+    public OrbData GetToBeShootedNextOrbData()
+    {
+        return orbDataToBeShootedNext;
     }
 }
