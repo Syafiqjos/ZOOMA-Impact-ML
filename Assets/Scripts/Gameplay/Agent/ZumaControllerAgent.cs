@@ -23,7 +23,7 @@ public class ZumaControllerAgent : ZumaController
 
         if (enableSmoothTracking)
         {
-            currentPointerPos = Vector3.Lerp(currentPointerPos, pointer.position, 0.1f);
+            currentPointerPos = Vector3.Lerp(currentPointerPos, pointer.position, 0.2f);
         } else
         {
             currentPointerPos = pointer.position;
