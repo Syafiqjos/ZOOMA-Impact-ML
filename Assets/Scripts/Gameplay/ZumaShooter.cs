@@ -29,7 +29,7 @@ public class ZumaShooter : MonoBehaviour
 
     private void CheckShooting()
     {
-        if (isEnable)
+        if (isEnable && Time.timeScale > 0)
         {
             if (CheckShootingTrigger())
             {

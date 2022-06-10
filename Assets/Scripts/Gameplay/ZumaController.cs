@@ -19,7 +19,9 @@ public class ZumaController : MonoBehaviour
     private void ControlFacing()
     {
         Vector3 pointerLocation = GetPointerLocation();
-        transform.LookAt(pointerLocation);
+        if (Time.timeScale > 0) {
+            transform.LookAt(pointerLocation);
+        }
     }
 
     public virtual Vector3 GetPointerLocation()
